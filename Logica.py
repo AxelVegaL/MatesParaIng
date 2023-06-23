@@ -1,18 +1,44 @@
-#Integral Múltiple: Integral definida de varias variables { f(x,y) } o con varios signos de integración { dx dy }
+import sympy as sp
 
-import scipy.integrate as spi
-import numpy as np
+def multiple_integral(expression, variables, limits):
+    symbols = sp.symbols(variables)
+    integral_expr = expression
+    for i, limit in enumerate(limits):
+        if limit[1] is None:
+            integral_expr = sp.integrate(integral_expr, (symbols[i], limit[0]))
+        else:
+            integral_expr = sp.integrate(integral_expr, (symbols[i], limit[0], limit[1]))
+    return integral_expr
 
-integrand = lambda x, y, z : x + y + z ** 2
+def main():
+    expression_str = input("Ingrese la expresión a integrar: ")
+    expression = sp.sympify(expression_str.replace("^", "**"))
+    num_variables = int(input("Ingrese el número de variables de integración: "))
+    variables = []
+    for i in range(num_variables):
+        variable = input(f"Ingrese el nombre de la variable {i + 1}: ")
+        variables.append(variable)
+    num_limits = int(input("Ingrese el número de límites de integración: "))
+    limits = []
+    for i in range(num_limits):
+        limit_type = input(f"Ingrese el tipo de límite (indefinido o definido) {i + 1}: ")
+        if limit_type.lower() == "indefinido":
+            limits.append((None, None))
+        elif limit_type.lower() == "definido":
+            lower_limit = float(input(f"Ingrese el límite inferior {i + 1}: "))
+            upper_limit = float(input(f"Ingrese el límite superior {i + 1}: "))
+            limits.append((lower_limit, upper_limit))
+        else:
+            print("Tipo de límite inválido. Por favor, intente nuevamente.")
+            return
+    result = multiple_integral(expression, variables, limits)
+    print("El resultado de la integral es:", result)
 
-bounds_z = lambda : [1., 2.]
-bounds_y = lambda z : [z+1, z+2]
-bounds_x = lambda z,y : [y+z, 2 * (y+z)]
+main()
 
-ya=lambda z: z+1 
-yb=lambda z: z+2
-xa=lambda z, y : y+z
-xb=lambda z, y : 2 * (y+z)
 
-result, error = spi.nquad(integrand, [bounds_x, bounds_y, bounds_z])
-print ('Result is ', result, ' with error ', error)
+
+
+
+
+
