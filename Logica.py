@@ -1,7 +1,14 @@
-import sympy as sp
+import sympy as sp  #Se importa la librería de Sympy para realizar las operaciones matemáticas
+
 
 def multiple_integral(expression, variables, limits):
-    symbols = sp.symbols(variables)
+    
+    #Los parámetros dentro de la función son:
+    #expression: la expresión a integrar
+    #variables: las variables de integración
+    #limits: los límites de integración para hacerla definida
+    
+    symbols = sp.symbols(variables)     #Se crea una lista de símbolos para las variables de integración
     integral_expr = expression
     for i, limit in enumerate(limits):
         if limit[1] is None:
@@ -13,7 +20,12 @@ def multiple_integral(expression, variables, limits):
 def main():
     expression_str = input("Ingrese la expresión a integrar: ")
     expression = sp.sympify(expression_str.replace("^", "**"))
-    num_variables = int(input("Ingrese el número de variables de integración: "))
+    
+    #Se reemplazan los símbolos de potencia de ^ a ** para que Sympy los reconozca porque le da amzieda y explotaba el programa con los "^"
+    #Adicionalmente, se pasa temporalmente como string pero para Sympify
+    #Lo que lo convierte en una expresión matemática. Sin él, es un string cualquiera
+    
+    num_variables = int(input("Ingrese el número de variables de integración: "))        #Esta parte es para que el usuario ingrese el número de variables de integración
     variables = []
     for i in range(num_variables):
         variable = input(f"Ingrese el nombre de la variable {i + 1}: ")
@@ -35,10 +47,3 @@ def main():
     print("El resultado de la integral es:", result)
 
 main()
-
-
-
-
-
-
-
