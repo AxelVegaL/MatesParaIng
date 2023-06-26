@@ -18,6 +18,7 @@ def multiple_integral(expression, variables, limits):
     return integral_expr
 
 def main():
+    constant = False
     expression_str = input("Ingrese la expresión a integrar: ")
     expression = sp.sympify(expression_str.replace("^", "**"))
     
@@ -35,15 +36,22 @@ def main():
     for i in range(num_limits):
         limit_type = input(f"Ingrese el tipo de límite (indefinido o definido) {i + 1}: ")
         if limit_type.lower() == "indefinido":
+            constant = True
+            #Sí ocupa constante de integración
             limits.append((None, None))
         elif limit_type.lower() == "definido":
             lower_limit = float(input(f"Ingrese el límite inferior {i + 1}: "))
             upper_limit = float(input(f"Ingrese el límite superior {i + 1}: "))
             limits.append((lower_limit, upper_limit))
+            constant = False
+            #No ocupa constante de integración
         else:
             print("Tipo de límite inválido. Por favor, intente nuevamente.")
             return
     result = multiple_integral(expression, variables, limits)
-    print("El resultado de la integral es:", result)
+    if constant==True:
+        print("El resultado de la integral es:", result, " + C")
+    else:
+        print("El resultado de la integral es:", result)
 
 main()
