@@ -10,24 +10,26 @@ ventana.configure(bg="#c9eeee")
 Style().configure("btnC", padding=(0, 5, 0, 5),
             font='serif 10')
 
-#Frame1 = Frame(ventana, bg="#c9ffde", padx=10, pady=10)
-#Frame1.pack(padx=10, pady=10, fill=BOTH)
-FrameLeft = Frame(ventana, bg="red",padx=100)
-FrameLeft.pack(fill="both",side=LEFT, expand=True)
-FrameRight=Frame(ventana, bg="blue")
-FrameRight.pack(fill="both", side=RIGHT, padx=100, expand=True)
-FrameBtn=Frame(ventana, bg="white")
-FrameBtn.pack(padx=50, fill="y", expand=True)
+Frame1 = Frame(ventana, bg="#c9ffde", padx=10, pady=10)
+
+Label(Frame1, text="Integración por múltiples Integrales", font="Lucida 22 bold"
+,bg="#c9ffde", justify="center").pack(pady=5)
+
+Frame1.pack(fill=BOTH)
+
+FrameLeft = Frame(ventana)
+Label(FrameLeft, text="Izquierda").pack(padx=20, pady=20)
+FrameLeft.pack(side=LEFT, expand=True, fill=BOTH)
+
+FrameRight=Frame(ventana)
+Label(FrameRight, text="Derecha").pack(padx=20, pady=20)
+FrameRight.pack(side=RIGHT, expand=True, fill=BOTH)
+
+FrameBtn=Frame(ventana)
+Label(FrameBtn, text="Centro").pack(padx=20, pady=20)
+FrameBtn.pack(side=RIGHT, expand=True, fill=BOTH)
 
 # Configuracion de columnas y filas para botones
-Label(FrameBtn, text="Centro").pack()
-Label(FrameLeft, text="Izquierda").pack()
-Label(FrameRight, text="Derecha").pack()
 
-#Label(Frame1, text="Integración por múltiples Integrales", font="Lucida 22 bold"
- #E     ,bg="#c9ffde", justify="center").pack(pady=15)
-
-
-
-Logica.main()
+#Logica.main()
 ventana.mainloop() 
