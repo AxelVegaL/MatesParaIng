@@ -4,12 +4,12 @@ import Logica
 
 ventana = Tk()
 ventana.title("Integrales Múltiples")
-ventana.geometry("920x580")
+ventana.geometry("970x600")
 ventana.configure(bg="#c9eeee")
 
 Expresion = StringVar()
 
-Style().configure("btnC", padding=(0, 5, 0, 5),
+Style().configure("TButton", padding=(0, 5, 0, 5),
             font='serif 10')
 
 Frame1 = Frame(ventana, bg="#c9ffde", padx=10, pady=10)
@@ -23,31 +23,36 @@ EntryIntegral.pack(pady=30)
 
 Frame1.pack(fill=BOTH)
 
-FrameLeft = Frame(ventana)
+FrameLeft = Frame(ventana, bg="pink")
 Label(FrameLeft, text="Izquierda").pack(padx=20, pady=20)
-FrameLeft.pack(side=LEFT, expand=True, fill=BOTH)
+FrameLeft.pack(side=LEFT, fill=BOTH)
 
-FrameRight=Frame(ventana)
+FrameRight=Frame(ventana, bg="pink")
 Label(FrameRight, text="Derecha").pack(padx=20, pady=20)
-FrameRight.pack(side=RIGHT, expand=True, fill=BOTH)
+FrameRight.pack(side=RIGHT, fill=BOTH)
 
 FrameBtn = Frame(ventana)
-FrameBtn.pack(anchor=S, expand=True, fill=BOTH)
+FrameBtn.pack(anchor=N, expand=True, fill=BOTH) 
 
 # CC = ConfirmCancel
 FrameCC=Frame(ventana)
 FrameCC.pack(side=RIGHT, expand=True, fill=BOTH, padx=20, pady=20)
 
+btnIntegrar = Button(FrameCC, text="Integrar")
+btnIntegrar.pack(padx=7, pady=7,side=LEFT, anchor=NW)
+
+btnClear = Button(FrameCC, text="Clear")
+btnClear.pack(padx=7, pady=7,side=RIGHT, anchor=SE)
 
 # Configuracion de columnas y filas para botones
 
-FrameBtn.columnconfigure(0, pad=5)
-FrameBtn.columnconfigure(1, pad=5)
+FrameBtn.rowconfigure(0, pad=100)
+FrameBtn.rowconfigure(1, pad=100)
 
-FrameBtn.rowconfigure(0, pad=3)
-FrameBtn.rowconfigure(1, pad=3)
-FrameBtn.rowconfigure(2, pad=3)
-FrameBtn.rowconfigure(3, pad=3)
+FrameBtn.columnconfigure(0, pad=50)
+FrameBtn.columnconfigure(1, pad=50)
+FrameBtn.columnconfigure(2, pad=50)
+FrameBtn.columnconfigure(3, pad=50)
 
 """
 Suma: btnsum
@@ -60,21 +65,21 @@ Raiz Modificable: btnrootcustom
 Pi: btnpi
 """
 
-btnsum = Button(FrameBtn, text="+")
+btnsum = Button(FrameBtn, text="+", height=3, width=9, bg="light gray")
 btnsum.grid(row=0, column=0)
-btnres = Button(FrameBtn, text="-")
+btnres = Button(FrameBtn, text="-", height=3, width=9, bg="light gray")
 btnres.grid(row=0, column=1)
-btnmulti = Button(FrameBtn, text="*")
+btnmulti = Button(FrameBtn, text="*", height=3, width=9, bg="light gray")
 btnmulti.grid(row=0, column=2)
-btndiv = Button(FrameBtn, text="/")
+btndiv = Button(FrameBtn, text="/", height=3, width=9, bg="light gray")
 btndiv.grid(row=0, column=3)
-btnpot = Button(FrameBtn, text="^")
+btnpot = Button(FrameBtn, text="^", height=3, width=9, bg="light gray")
 btnpot.grid(row=1, column=0)
-btnroot = Button(FrameBtn, text="√")
+btnroot = Button(FrameBtn, text="√", height=3, width=9, bg="light gray")
 btnroot.grid(row=1, column=1)
-btnrootcustom = Button(FrameBtn, text="x√")
+btnrootcustom = Button(FrameBtn, text="x√", height=3, width=9, bg="light gray")
 btnrootcustom.grid(row=1, column=2)
-btnpi = Button(FrameBtn, text="π")
+btnpi = Button(FrameBtn, text="π", height=3, width=9, bg="light gray")
 btnpi.grid(row=1, column=3)
 
 
