@@ -25,7 +25,7 @@ def main():
     #Se reemplazan los símbolos de potencia de ^ a ** para que Sympy los reconozca porque le da amzieda y explotaba el programa con los "^"
     #Adicionalmente, se pasa temporalmente como string pero para Sympify
     #Lo que lo convierte en una expresión matemática. Sin él, es un string cualquiera
-    
+        
     num_variables = int(input("Ingrese el número de variables de integración: "))        #Esta parte es para que el usuario ingrese el número de variables de integración
     variables = []
     for i in range(num_variables):
@@ -53,5 +53,8 @@ def main():
         print("El resultado de la integral es:", result, " + C")
     else:
         print("El resultado de la integral es:", result)
+    multi = multiple_integral(result, variables, limits)
+    print("La integral doble es:", multi, " + C")
+    
 
 ##main()
