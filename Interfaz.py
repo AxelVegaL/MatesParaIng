@@ -11,6 +11,9 @@ ventana.resizable(False,False)
 
 Expresion = StringVar()
 
+# DECLARACION DE FUNCIONES
+
+
 # Preparamos imagen
 imgintegral = Image.open("img\simbintegracion.png")
 imgintegral2 = imgintegral.resize((192,308))
@@ -21,39 +24,55 @@ Style().configure("TButton", padding=(0, 5, 0, 5),
 
 Frame1 = Frame(ventana, bg="#FF4146")
 Label(Frame1, text="Integración por múltiples Integrales", font="Lucida 22 bold"
-,bg="#FF4146", justify="center").pack(pady=5)
-EntryIntegral = Entry(Frame1, textvariable = Expresion,
-justify=CENTER, width=40, font="Lucida 25")
-EntryIntegral.pack(pady=30)
+,bg="#FF4146", fg="white", justify="center").pack(pady=(4,6))
 Frame1.pack(fill=BOTH, padx=10, pady=(10,0))
 
+EntryIntegral = Entry(Frame1, textvariable = Expresion,
+justify=CENTER, width=40, font="Lucida 25")
+EntryIntegral.pack(pady=20)
+
+#Boton Clear
+btnClear = Button(Frame1, text="Clear", font="Lucida 12 bold")
+btnClear.place(relx=.037, rely=.573)
+
+#Boton Integrar
+btnIntegrar = Button(Frame1, text="Integrar", font="Lucida 12 bold")
+btnIntegrar.place(relx=.91, rely=.55)
+
+
 FrameRight=Frame(ventana, bg="#4984FB")
-Label(FrameRight, text="Derecha").pack(padx=20, pady=20)
-FrameRight.pack(side=RIGHT, fill=BOTH, expand=TRUE,padx=(8,15), pady=(10,20))
+FrameRight.pack(side=RIGHT, fill=BOTH, expand=TRUE, padx=(8,15), pady=(10,20))
+
+Label(FrameRight, text="Límites de Integración", font="Lucida 12 bold",
+      fg="white", bg="#4984FB").pack(pady=(10,0))
 
 # Colocar foto
 lblimagen = Label(FrameRight, image=imgintegralplace)
-#lblimagen.image = imgintegralplace
-lblimagen.place(relx=.28, rely=.18)
+lblimagen.place(relx=.22, rely=.15)
+
+#Entries de límite inferior y superior
+EntryInf = Entry(FrameRight, font="Lucida 8 bold", justify=CENTER, width=5).place(relx=.52, rely=.77)
+EntrySup = Entry(FrameRight, font="Lucida 8 bold", justify=CENTER, width=5).place(relx=.62, rely=.28)
+
+btnSET = Button(FrameRight, text="Set", font="Lucida 13 bold").place(relx=.82, rely=.88)
 
 FrameBtn = Frame(ventana)
 FrameBtn.pack(anchor=N, expand=True,padx=(5,0), pady=(10,0))
 
 # CC = ConfirmCancel
-FrameCC=Frame(ventana)
-FrameCC.pack(side=RIGHT, expand=True, fill=BOTH, padx=20, pady=20)
+FrameResultado=Frame(ventana)
+FrameResultado.pack(expand=True, fill=BOTH, padx=10, pady=(0,20))
 
-btnIntegrar = Button(FrameCC, text="Integrar")
-btnIntegrar.pack(padx=7, pady=7,side=LEFT, anchor=NW)
+FrameResultado.grid_columnconfigure(0, weight=1)
+FrameResultado.grid_rowconfigure(0, weight=1)
 
-btnClear = Button(FrameCC, text="Clear")
-btnClear.pack(padx=7, pady=7,side=RIGHT, anchor=SE)
+EntryResultado = Entry(FrameResultado, font="Lucida 22", justify=CENTER).grid(row=0, column= 0,sticky="wnes")
 
 # Configuracion de columnas y filas para botones
 
 FrameBtn.rowconfigure(0, pad=50)
-FrameBtn.rowconfigure(1, pad=30)
-FrameBtn.rowconfigure(2, pad=30)
+FrameBtn.rowconfigure(1, pad=50)
+FrameBtn.rowconfigure(2, pad=50)
 
 FrameBtn.columnconfigure(0, pad=50)
 FrameBtn.columnconfigure(1, pad=50)
@@ -68,33 +87,44 @@ Potencia: btnpot
 Raiz: btnroot
 Raiz Modificable: btnrootcustom
 Pi: btnpi
-E: btne
 seno: btnsin
 coseno: btncos
 tangente: btntan
 secante: btnsec
 cosecante: btncsc
 cotangente: btncot
+logaritmo: btnlog
+integral múltiple: btnint
 """
 
-btnsum = Button(FrameBtn, text="+", height=3, width=9, bg="light gray")
-btnsum.grid(row=0, column=0)
-btnres = Button(FrameBtn, text="-", height=3, width=9, bg="light gray")
-btnres.grid(row=0, column=1)
 btnmulti = Button(FrameBtn, text="*", height=3, width=9, bg="light gray")
-btnmulti.grid(row=0, column=2)
+btnmulti.grid(row=0, column=0)
 btndiv = Button(FrameBtn, text="/", height=3, width=9, bg="light gray")
-btndiv.grid(row=0, column=3)
+btndiv.grid(row=0, column=1)
 btnpot = Button(FrameBtn, text="^", height=3, width=9, bg="light gray")
-btnpot.grid(row=0, column=4)
+btnpot.grid(row=0, column=2)
 btnroot = Button(FrameBtn, text="√", height=3, width=9, bg="light gray")
-btnroot.grid(row=1, column=0)
+btnroot.grid(row=0, column=3)
 btnrootcustom = Button(FrameBtn, text="x√", height=3, width=9, bg="light gray")
-btnrootcustom.grid(row=1, column=1)
+btnrootcustom.grid(row=0, column=4)
+btnsin = Button(FrameBtn, text="sin", height=3, width=9, bg="light gray")
+btnsin.grid(row=1, column=0)
+btncos = Button(FrameBtn, text="cos", height=3, width=9, bg="light gray")
+btncos.grid(row=1, column=1)
+btntan = Button(FrameBtn, text="tan", height=3, width=9, bg="light gray")
+btntan.grid(row=1, column=2)
 btnpi = Button(FrameBtn, text="π", height=3, width=9, bg="light gray")
-btnpi.grid(row=1, column=2)
-
-
+btnpi.grid(row=1, column=3)
+btnlog = Button(FrameBtn, text="log", height=3, width=9, bg="light gray")
+btnlog.grid(row=1, column=4)
+btncsc = Button(FrameBtn, text="csc", height=3, width=9, bg="light gray")
+btncsc.grid(row=2, column=0)
+btnsec = Button(FrameBtn, text="sec", height=3, width=9, bg="light gray")
+btnsec.grid(row=2, column=1)
+btncot = Button(FrameBtn, text="cot", height=3, width=9, bg="light gray")
+btncot.grid(row=2, column=2)
+btnint = Button(FrameBtn, text="∫", height=3, width=9, bg="light gray")
+btnint.grid(row=2, column=4)
 
 #Logica.main()
 ventana.mainloop() 
