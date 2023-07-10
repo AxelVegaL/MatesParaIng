@@ -10,9 +10,54 @@ ventana.configure(bg="#FF4146")
 ventana.resizable(False,False)
 
 Expresion = StringVar()
+Integrada = StringVar()
 
 # DECLARACION DE FUNCIONES
-
+def clickmulti():
+      val = "*"
+      Expresion.set(Expresion.get()+val)
+def clickdiv():
+      val = "/"
+      Expresion.set(Expresion.get()+val)
+def clickpot():
+      val = "**"
+      Expresion.set(Expresion.get()+val)
+def clickroot():
+      val = "sqrt()"
+      Expresion.set(Expresion.get()+val)
+def clickrootcustom():
+      val = "()sqrt()"
+      Expresion.set(Expresion.get()+val)
+def clicksin():
+      val = "sin()"
+      Expresion.set(Expresion.get()+val)
+def clickcos():
+      val = "cos()"
+      Expresion.set(Expresion.get()+val)
+def clicktan():
+      val = "tan()"
+      Expresion.set(Expresion.get()+val)
+def clickcsc():
+      val = "csc()"
+      Expresion.set(Expresion.get()+val)
+def clicksec():
+      val = "sec()"
+      Expresion.set(Expresion.get()+val)
+def clickcot():
+      val = "cot()"
+      Expresion.set(Expresion.get()+val)
+def clickpi():
+      val = "pi"
+      Expresion.set(Expresion.get()+val)
+def clicklog():
+      val = "ln()"
+      Expresion.set(Expresion.get()+val)
+      
+def SubirInt():
+      Expresion.set(Integrada.get())
+      
+def Clear():
+      Expresion.set("")
 
 # Preparamos imagen
 imgintegral = Image.open("img\simbintegracion.png")
@@ -32,13 +77,13 @@ justify=CENTER, width=40, font="Lucida 25")
 EntryIntegral.pack(pady=20)
 
 #Boton Clear
-btnClear = Button(Frame1, text="Clear", font="Lucida 12 bold")
+btnClear = Button(Frame1, text="Clear", font="Lucida 12 bold"
+                        ,command=Clear)
 btnClear.place(relx=.037, rely=.573)
 
 #Boton Integrar
 btnIntegrar = Button(Frame1, text="Integrar", font="Lucida 12 bold")
 btnIntegrar.place(relx=.91, rely=.55)
-
 
 FrameRight=Frame(ventana, bg="#4984FB")
 FrameRight.pack(side=RIGHT, fill=BOTH, expand=TRUE, padx=(8,15), pady=(10,20))
@@ -66,7 +111,7 @@ FrameResultado.pack(expand=True, fill=BOTH, padx=10, pady=(0,20))
 FrameResultado.grid_columnconfigure(0, weight=1)
 FrameResultado.grid_rowconfigure(0, weight=1)
 
-EntryResultado = Entry(FrameResultado, font="Lucida 22", justify=CENTER).grid(row=0, column= 0,sticky="wnes")
+EntryResultado = Entry(FrameResultado, font="Lucida 22", justify=CENTER, textvariable = Integrada).grid(row=0, column= 0,sticky="wnes")
 
 # Configuracion de columnas y filas para botones
 
@@ -97,33 +142,47 @@ logaritmo: btnlog
 integral múltiple: btnint
 """
 
-btnmulti = Button(FrameBtn, text="*", height=3, width=9, bg="light gray")
+btnmulti = Button(FrameBtn, text="*", height=3, width=9, bg="light gray"
+                  ,command=clickmulti)
 btnmulti.grid(row=0, column=0)
-btndiv = Button(FrameBtn, text="/", height=3, width=9, bg="light gray")
+btndiv = Button(FrameBtn, text="/", height=3, width=9, bg="light gray"
+                  ,command=clickdiv)
 btndiv.grid(row=0, column=1)
-btnpot = Button(FrameBtn, text="^", height=3, width=9, bg="light gray")
+btnpot = Button(FrameBtn, text="^", height=3, width=9, bg="light gray"
+                  ,command=clickpot)
 btnpot.grid(row=0, column=2)
-btnroot = Button(FrameBtn, text="√", height=3, width=9, bg="light gray")
+btnroot = Button(FrameBtn, text="√", height=3, width=9, bg="light gray"
+                  ,command=clickroot)
 btnroot.grid(row=0, column=3)
-btnrootcustom = Button(FrameBtn, text="x√", height=3, width=9, bg="light gray")
+btnrootcustom = Button(FrameBtn, text="x√", height=3, width=9, bg="light gray"
+                  ,command=clickrootcustom)
 btnrootcustom.grid(row=0, column=4)
-btnsin = Button(FrameBtn, text="sin", height=3, width=9, bg="light gray")
+btnsin = Button(FrameBtn, text="sin", height=3, width=9, bg="light gray"
+                  ,command=clicksin)
 btnsin.grid(row=1, column=0)
-btncos = Button(FrameBtn, text="cos", height=3, width=9, bg="light gray")
+btncos = Button(FrameBtn, text="cos", height=3, width=9, bg="light gray"
+                  ,command=clickcos)
 btncos.grid(row=1, column=1)
-btntan = Button(FrameBtn, text="tan", height=3, width=9, bg="light gray")
+btntan = Button(FrameBtn, text="tan", height=3, width=9, bg="light gray"
+                  ,command=clicktan)
 btntan.grid(row=1, column=2)
-btnpi = Button(FrameBtn, text="π", height=3, width=9, bg="light gray")
+btnpi = Button(FrameBtn, text="π", height=3, width=9, bg="light gray"
+                  ,command=clickpi)
 btnpi.grid(row=1, column=3)
-btnlog = Button(FrameBtn, text="log", height=3, width=9, bg="light gray")
+btnlog = Button(FrameBtn, text="log", height=3, width=9, bg="light gray"
+                  ,command=clicklog)
 btnlog.grid(row=1, column=4)
-btncsc = Button(FrameBtn, text="csc", height=3, width=9, bg="light gray")
+btncsc = Button(FrameBtn, text="csc", height=3, width=9, bg="light gray"
+                  ,command=clickcsc)
 btncsc.grid(row=2, column=0)
-btnsec = Button(FrameBtn, text="sec", height=3, width=9, bg="light gray")
+btnsec = Button(FrameBtn, text="sec", height=3, width=9, bg="light gray"
+                  ,command=clicksec)
 btnsec.grid(row=2, column=1)
-btncot = Button(FrameBtn, text="cot", height=3, width=9, bg="light gray")
+btncot = Button(FrameBtn, text="cot", height=3, width=9, bg="light gray"
+                  ,command=clickcot)
 btncot.grid(row=2, column=2)
-btnint = Button(FrameBtn, text="∫", height=3, width=9, bg="light gray")
+btnint = Button(FrameBtn, text="∫", height=3, width=9, bg="light gray"
+                  ,command=SubirInt)
 btnint.grid(row=2, column=4)
 
 #Logica.main()
