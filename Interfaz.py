@@ -60,7 +60,7 @@ def Clear():
       Expresion.set("")
 
 # Preparamos imagen
-imgintegral = Image.open("img\simbintegracion.png")
+imgintegral = Image.open("img\simbintegracion.jpeg")
 imgintegral2 = imgintegral.resize((192,308))
 imgintegralplace = ImageTk.PhotoImage(imgintegral2)
 
