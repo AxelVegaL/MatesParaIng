@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter.ttk import Style
 from PIL import ImageTk, Image
-import Logica
 
 ventana = Tk()
 ventana.title("Integrales Múltiples")
