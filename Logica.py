@@ -30,7 +30,15 @@ def main():
     for i in range(num_variables):
         variable = input(f"Ingrese el nombre de la variable {i + 1}: ")
         variables.append(variable)
-    num_limits = int(input("Ingrese el número de límites de integración: "))
+    """ num_limits = int(input("Ingrese el número de límites de integración: ")) """
+    num_limits = 1
+    #si se deja con límite 1, sólo integra en base a una variable
+    #pero igualado al número de variables, se integra en base a todas las variables
+    #esto deja la diferencia entre:
+    #Límite 1 de x + y:     x**2/2 + x*y + C
+    #límite =num_variables de x + y:      x**2*y/2 + x*y**2/2 + C
+    #Pese a que en calculadoras online como Mathway, el resultado es límite 1...
+    # a little... SUS ඞ
     limits = []
     for i in range(num_limits):
         limit_type = input(f"Ingrese el tipo de límite (indefinido o definido) {i + 1}: ")
