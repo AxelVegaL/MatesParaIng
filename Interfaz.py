@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.ttk import Style
 from PIL import ImageTk, Image
+from Logica import integrate_expression
 
 ventana = Tk()
 ventana.title("Integrales Múltiples")
@@ -57,6 +58,8 @@ def SubirInt():
       
 def Clear():
       Expresion.set("")
+#QUITAR RESTRICCIONES PASO A PASO SYMPY O MATHPY y checar SPLICING
+#def Integrar(Expresion.get(), )
 
 # Preparamos imagen
 imgintegral = Image.open("img\simbintegracion.jpeg")
@@ -80,9 +83,24 @@ btnClear = Button(Frame1, text="Clear", font="Lucida 12 bold"
                         ,command=Clear)
 btnClear.place(relx=.037, rely=.573)
 
+#Entry para el número de iteraciones
+EntryIteraciones = Entry(Frame1, font="Lucida 10 bold", justify=CENTER, width=5)
+EntryIteraciones.place(relx=.5, rely=.68)
+
 #Boton Integrar
-btnIntegrar = Button(Frame1, text="Integrar", font="Lucida 12 bold")
+def btnIntegrar_Click():
+    expression_str = Expresion.get()
+    num_iterations = int(EntryIteraciones.get())  # Obtener el número de iteraciones desde el Entry
+    
+    try:
+        result = integrate_expression(expression_str, num_iterations)
+        Integrada.set(str(result))
+    except Exception as e:
+        Integrada.set("Error: " + str(e))
+
+btnIntegrar = Button(Frame1, text="Integrar", font="Lucida 12 bold", command=btnIntegrar_Click)
 btnIntegrar.place(relx=.91, rely=.55)
+
 
 FrameRight=Frame(ventana, bg="#4984FB")
 FrameRight.pack(side=RIGHT, fill=BOTH, expand=TRUE, padx=(8,15), pady=(10,20))
