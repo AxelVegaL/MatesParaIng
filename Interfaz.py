@@ -12,6 +12,10 @@ ventana.resizable(False,False)
 Expresion = StringVar()
 Integrada = StringVar()
 
+lim_inf_str = StringVar()
+lim_sup_str = StringVar()
+isDefinida = True
+
 # DECLARACION DE FUNCIONES
 def clickmulti():
       val = "*"
@@ -58,8 +62,25 @@ def SubirInt():
       
 def Clear():
       Expresion.set("")
+
+def setLimites():
+      lim_sup = lim_sup_str.get()
+      lim_inf = lim_inf_str.get()
+      print(lim_sup)
+      print(lim_inf)
+      
+def Definido():
+      EntryInf.configure(state="normal")
+      EntrySup.configure(state="normal")
+      isDefinida = True
+      print(isDefinida)
+def Indefinido():
+      EntryInf.configure(state="disabled")
+      EntrySup.configure(state="disabled")
+      isDefinida = False
+      print(isDefinida)
+
 #QUITAR RESTRICCIONES PASO A PASO SYMPY O MATHPY y checar SPLICING
-#def Integrar(Expresion.get(), )
 
 # Preparamos imagen
 imgintegral = Image.open("img\simbintegracion.jpeg")
@@ -113,10 +134,14 @@ lblimagen = Label(FrameRight, image=imgintegralplace)
 lblimagen.place(relx=.22, rely=.15)
 
 #Entries de límite inferior y superior
-EntryInf = Entry(FrameRight, font="Lucida 8 bold", justify=CENTER, width=5).place(relx=.52, rely=.77)
-EntrySup = Entry(FrameRight, font="Lucida 8 bold", justify=CENTER, width=5).place(relx=.62, rely=.28)
+EntryInf = Entry(FrameRight, font="Lucida 8 bold", justify=CENTER, width=5, textvariable = lim_inf_str)
+EntryInf.place(relx=.52, rely=.77)
+EntrySup = Entry(FrameRight, font="Lucida 8 bold", justify=CENTER, width=5, textvariable = lim_sup_str)
+EntrySup.place(relx=.62, rely=.28)
 
-btnSET = Button(FrameRight, text="Set", font="Lucida 13 bold").place(relx=.82, rely=.88)
+btnSET = Button(FrameRight, text="Set", font="Lucida 13 bold", command = setLimites).place(relx=.82, rely=.90)
+btnINDEFINIDA = Button(FrameRight, text="Indefinida", font="Lucida 13 bold", command=Indefinido).place(relx=.05, rely=.90)
+btnDEFINIDA = Button(FrameRight, text="Definida", font="Lucida 13 bold", command=Definido).place(relx=.35, rely=.90)
 
 FrameBtn = Frame(ventana)
 FrameBtn.pack(anchor=N, expand=True,padx=(5,0), pady=(10,0))
