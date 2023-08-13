@@ -5,7 +5,7 @@ from PIL import ImageTk, Image
 ventana = Tk()
 ventana.title("Integrales Múltiples")
 ventana.geometry("970x600")
-ventana.configure(bg="#FF4146")
+ventana.configure(bg="#f05f62")
 ventana.resizable(False,False)
 
 Expresion = StringVar()
@@ -59,16 +59,16 @@ def Clear():
       Expresion.set("")
 
 # Preparamos imagen
-imgintegral = Image.open("img\simbintegracion.jpeg")
+imgintegral = Image.open("img\simbintegracion.jpg")
 imgintegral2 = imgintegral.resize((192,308))
 imgintegralplace = ImageTk.PhotoImage(imgintegral2)
 
 Style().configure("TButton", padding=(0, 5, 0, 5),
             font='serif 10')
 
-Frame1 = Frame(ventana, bg="#FF4146")
+Frame1 = Frame(ventana, bg="#f05f62")
 Label(Frame1, text="Integración por múltiples Integrales", font="Lucida 22 bold"
-,bg="#FF4146", fg="white", justify="center").pack(pady=(4,6))
+,bg="#f05f62", fg="white", justify="center").pack(pady=(4,6))
 Frame1.pack(fill=BOTH, padx=10, pady=(10,0))
 
 EntryIntegral = Entry(Frame1, textvariable = Expresion,
@@ -84,11 +84,11 @@ btnClear.place(relx=.037, rely=.573)
 btnIntegrar = Button(Frame1, text="Integrar", font="Lucida 12 bold")
 btnIntegrar.place(relx=.91, rely=.55)
 
-FrameRight=Frame(ventana, bg="#4984FB")
+FrameRight=Frame(ventana, bg="#509bd8")
 FrameRight.pack(side=RIGHT, fill=BOTH, expand=TRUE, padx=(8,15), pady=(10,20))
 
 Label(FrameRight, text="Límites de Integración", font="Lucida 12 bold",
-      fg="white", bg="#4984FB").pack(pady=(10,0))
+      fg="white", bg="#509bd8").pack(pady=(10,0))
 
 # Colocar foto
 lblimagen = Label(FrameRight, image=imgintegralplace)
