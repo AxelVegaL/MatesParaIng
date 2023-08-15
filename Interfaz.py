@@ -3,6 +3,8 @@ from tkinter.ttk import Style
 from PIL import ImageTk, Image
 from Logica import integrate_expression
 
+#import Logica
+
 ventana = Tk()
 ventana.title("Integrales Múltiples")
 ventana.geometry("970x600")
@@ -11,6 +13,7 @@ ventana.resizable(False,False)
 
 Expresion = StringVar()
 Integrada = StringVar()
+#Logic = Logica()
 
 lim_inf_str = StringVar()
 lim_sup_str = StringVar()
@@ -62,6 +65,10 @@ def SubirInt():
       
 def Clear():
       Expresion.set("")
+      
+def setLimites():
+      return
+      #Logica.
 
 def setLimites():
       lim_sup = lim_sup_str.get()
