@@ -11,7 +11,7 @@ x = symbols('x')
 ventana = Tk()
 ventana.title("Integrales Múltiples")
 ventana.geometry("970x600")
-ventana.configure(bg="#FF4146")
+ventana.configure(bg="#f05f62")
 ventana.resizable(False,False)
 
 Expresion = StringVar()
@@ -121,9 +121,9 @@ imgintegralplace = ImageTk.PhotoImage(imgintegral2)
 Style().configure("TButton", padding=(0, 5, 0, 5),
             font='serif 10')
 
-Frame1 = Frame(ventana, bg="#FF4146")
+Frame1 = Frame(ventana, bg="#f05f62")
 Label(Frame1, text="Integración por múltiples Integrales", font="Lucida 22 bold"
-,bg="#FF4146", fg="white", justify="center").pack(pady=(4,6))
+,bg="#f05f62", fg="white", justify="center").pack(pady=(4,6))
 Frame1.pack(fill=BOTH, padx=10, pady=(10,0))
 
 EntryIntegral = Entry(Frame1, textvariable = Expresion, justify=CENTER, width=40, font="Lucida 25")
@@ -150,7 +150,7 @@ EntryIteraciones.configure(validate="key", validatecommand=(validarFuncion, '%P'
 EntryIteraciones.place(relx=.949, rely=.82)
 
 # Indicador de frame de iteraciones:
-Label(Frame1, text="Repetir", font="Lucida 12 bold", bg="#FF4146", fg="white").place(relx=.88, rely=.8)
+Label(Frame1, text="Repetir", font="Lucida 12 bold", bg="#f05f62", fg="white").place(relx=.88, rely=.8)
 
 #Boton Integrar
 def btnIntegrar_Click():
@@ -205,14 +205,16 @@ btnSET = Button(FrameRight, text="Set", font="Lucida 13 bold", command=setLimite
 btnINDEFINIDA = Button(FrameRight, text="Indefinida", font="Lucida 13 bold", command=Indefinido).place(relx=.05, rely=.90)
 btnDEFINIDA = Button(FrameRight, text="Definida", font="Lucida 13 bold", command=Definido).place(relx=.35, rely=.90)
 
-FrameBtn = Frame(ventana)
-FrameBtn.pack(anchor=N, expand=True,padx=(5,0), pady=(10,0))
-
 # Agregar una entrada para variables en la interfaz
-Label(Frame1, text="Variables (separadas por comas):", font="Lucida 12 bold", bg="#FF4146", fg="white").place(relx=.1, rely=.9)
-EntryVariables = Entry(Frame1, font="Lucida 10 bold", justify=CENTER, width=20)
-EntryVariables.place(relx=.4, rely=.9)
+FrameLabelVariables = Frame(ventana, bg="#f05f62")
+FrameLabelVariables.pack(fill=BOTH, padx=10, pady=(5, 0))  # Ajustar pady aquí
 
+Label(FrameLabelVariables, text="Variables (separadas por comas):", font="Lucida 12 bold", bg="#f05f62", fg="white").pack(side=LEFT)
+EntryVariables = Entry(FrameLabelVariables, font="Lucida 10 bold", justify=CENTER, width=20)
+EntryVariables.pack(side=LEFT, padx=(5, 0))
+
+FrameBtn = Frame(ventana)
+FrameBtn.pack(anchor=N, expand=True, padx=(5, 0), pady=(10, 0))
 
 
 # CC = ConfirmCancel
