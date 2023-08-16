@@ -114,7 +114,7 @@ def Indefinido():
 #QUITAR RESTRICCIONES PASO A PASO SYMPY O MATHPY y checar SPLICING
 
 # Preparamos imagen
-imgintegral = Image.open("img\simbintegracion.jpeg")
+imgintegral = Image.open("img\simbintegracion.jpg")
 imgintegral2 = imgintegral.resize((192,308))
 imgintegralplace = ImageTk.PhotoImage(imgintegral2)
 
@@ -184,12 +184,12 @@ def btnIntegrar_Click():
 btnIntegrar = Button(Frame1, text="Integrar", font="Lucida 12 bold", command=btnIntegrar_Click)
 btnIntegrar.place(relx=.91, rely=.55)
 
+FrameRight=Frame(ventana, bg="#509bd8")
 
-FrameRight=Frame(ventana, bg="#4984FB")
 FrameRight.pack(side=RIGHT, fill=BOTH, expand=TRUE, padx=(8,15), pady=(10,20))
 
 Label(FrameRight, text="Límites de Integración", font="Lucida 12 bold",
-      fg="white", bg="#4984FB").pack(pady=(10,0))
+      fg="white", bg="#509bd8").pack(pady=(10,0))
 
 # Colocar foto
 lblimagen = Label(FrameRight, image=imgintegralplace)
