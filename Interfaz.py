@@ -126,8 +126,7 @@ Label(Frame1, text="Integración por múltiples Integrales", font="Lucida 22 bol
 ,bg="#FF4146", fg="white", justify="center").pack(pady=(4,6))
 Frame1.pack(fill=BOTH, padx=10, pady=(10,0))
 
-EntryIntegral = Entry(Frame1, textvariable = Expresion,
-justify=CENTER, width=40, font="Lucida 25")
+EntryIntegral = Entry(Frame1, textvariable = Expresion, justify=CENTER, width=40, font="Lucida 25")
 EntryIntegral.pack(pady=20)
 
 #Boton Clear
