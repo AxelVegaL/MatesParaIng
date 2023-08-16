@@ -7,8 +7,8 @@ def multiple_integral(expression, variables, limits):
     #expression: la expresión a integrar
     #variables: las variables de integración
     #limits: los límites de integración para hacerla definida
-    symbols = sp.symbols(variables)     #Se crea una lista de símbolos para las variables de integración
-    integral_expr = expression
+    symbols = sp.symbols(variables) #Se crea una lista de símbolos para las variables de integración
+    integral_expr = sp.sympify(expression)
     for i, limit in enumerate(limits):
         if limit[1] is None:
             integral_expr = sp.integrate(integral_expr, (symbols[i], limit[0]))
@@ -48,16 +48,29 @@ def main():
             print("Tipo de límite inválido. Por favor, intente nuevamente.")
             return
     result = multiple_integral(expression, variables, limits)
-    if constant==True:
-        print("El resultado de la integral es:", result, " + C")
-    else:
-        print("El resultado de la integral es:", result)
-    multi = [multiple_integral(result, variables, limits)]
-    print("La integral doble es:", multi[0], " + C")
-    multi.append(multiple_integral(multi[0], variables, limits))
-    print("La integral triple es:", multi[1], " + C")
-    multi.append(multiple_integral(multi[1], variables, limits))
-    print("La integral cuádruple es:", multi[2], " + C")
+    check = False #auxiliar para el try
+    
+    #Se hace un try para que el usuario ingrese un número entero y no un string o float
+    #Se repetirá gracias al check hasta que el usuario haga lo que se solicita
+    while check == False:
+        try:
+            repeat = int(input("¿Cuántas veces quiere integrar?\t"))
+            if repeat < 1:
+                print("Ingrese un número mayor a 0")
+            else:
+                check = True
+                repeat -= 1
+        except ValueError:
+            print("Ingrese un número entero")
+            check = False
 
+    #Se hace un for para que se repita la integral tantas veces como el usuario lo solicita
+    print("La primera integral es: ", result, "+ C")
+    for i in range(repeat):
+        result = multiple_integral(result, variables, limits)
+        if constant:
+            print("La integral siguiente es:", result, "+ C")
+        else:
+            print("La integral siguiente es:", result)
     
 main()
